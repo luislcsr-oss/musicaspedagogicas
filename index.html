@@ -9,238 +9,284 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --rosa:#d4879a;--rosa-claro:#fef5f7;--rosa-medio:#f2c4cf;--rosa-escuro:#a84f63;
-  --rosa-text:#7a2d40;--rosa-border:rgba(212,135,154,0.3);--rosa-border-forte:rgba(212,135,154,0.5);
-  --verde:#2d9e7a;--verde-claro:#eaf7f2;--verde-escuro:#1a6b52;
-  --roxo:#7c6dbf;--roxo-claro:#f0eefb;--roxo-escuro:#4a3d8a;
-  --amber:#c4892a;--amber-claro:#fef4e4;--amber-escuro:#7a5210;
-  --azul:#3a7fc1;--azul-claro:#eaf3fc;--azul-escuro:#1a4f82;
-  --cinza-claro:#f5f4f2;--cinza-escuro:#3a3a3a;
-  --bg:#fdf6f8;--surface:#ffffff;
+  --rosa-text:#7a2d40;--rb:rgba(212,135,154,0.28);--rbf:rgba(212,135,154,0.48);
+  --verde:#2d9e7a;--vc:#eaf7f2;--ve:#1a6b52;
+  --roxo:#7c6dbf;--rc:#f0eefb;--re:#4a3d8a;
+  --amber:#c4892a;--ac:#fef4e4;--ae:#7a5210;
+  --azul:#3a7fc1;--azc:#eaf3fc;--aze:#1a4f82;
+  --cc:#f5f4f2;--ce:#3a3a3a;
+  --bg:#fdf4f6;--surface:#ffffff;
   --text:#2a1a20;--muted:#9a8088;
-  --sombra:0 2px 16px rgba(168,79,99,0.08);
-  --sombra-card:0 1px 8px rgba(168,79,99,0.06);
+  --sh:0 2px 20px rgba(168,79,99,0.09);
+  --shc:0 1px 10px rgba(168,79,99,0.07);
 }
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;position:relative;overflow-x:hidden}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;position:relative}
 
-/* FUNDO FLORAL */
-.floral{position:fixed;pointer-events:none;z-index:0}
-.floral.tl{top:-20px;left:-20px;width:380px;opacity:.09}
-.floral.br{bottom:-20px;right:-20px;width:340px;opacity:.08;transform:rotate(180deg)}
-.floral.tr{top:60px;right:-10px;width:200px;opacity:.05}
-.floral.bl{bottom:60px;left:-10px;width:180px;opacity:.05;transform:scaleX(-1)}
-.floral.mid{top:40%;left:50%;transform:translateX(-50%);width:500px;opacity:.03}
+/* FUNDO RICO */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 5% 10%, rgba(242,196,207,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 95% 90%, rgba(212,135,154,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 35% at 90% 5%,  rgba(254,245,247,0.5)  0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 10% 95%, rgba(242,196,207,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(253,244,246,0.6)  0%, transparent 70%);
+}
 
-/* GRADIENTE DE FUNDO */
-body::before{content:'';position:fixed;inset:0;background:
-  radial-gradient(ellipse 60% 40% at 8% 15%,rgba(242,196,207,0.18) 0%,transparent 60%),
-  radial-gradient(ellipse 50% 35% at 92% 85%,rgba(212,135,154,0.14) 0%,transparent 60%),
-  radial-gradient(ellipse 40% 30% at 85% 10%,rgba(254,245,247,0.4) 0%,transparent 50%),
-  radial-gradient(ellipse 35% 25% at 15% 90%,rgba(242,196,207,0.12) 0%,transparent 50%);
-pointer-events:none;z-index:0}
+/* FLORES FIXAS */
+.flor{position:fixed;pointer-events:none;z-index:0}
+.flor.f1{top:-60px;left:-60px;width:420px;opacity:.085}
+.flor.f2{bottom:-60px;right:-60px;width:380px;opacity:.075;transform:rotate(180deg)}
+.flor.f3{top:30%;right:-30px;width:220px;opacity:.05;transform:rotate(25deg)}
+.flor.f4{bottom:20%;left:-30px;width:190px;opacity:.05;transform:rotate(-15deg) scaleX(-1)}
+.flor.f5{top:55%;left:48%;width:300px;opacity:.03;transform:translateX(-50%) rotate(10deg)}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:100;background:rgba(253,246,248,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--rosa-border-forte);padding:.9rem 2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-mark{width:40px;height:40px;background:linear-gradient(145deg,#e8a0b4,#c06880);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(168,79,99,0.28)}
-.logo-mark svg{width:21px;height:21px;fill:white}
-.logo-text h1{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;color:var(--text);letter-spacing:.01em;line-height:1.2}
-.logo-text p{font-size:11px;color:var(--muted);margin-top:1px;font-weight:300;letter-spacing:.02em}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(253,244,246,0.82);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--rbf);
+  padding:.85rem 2rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-icon{
+  width:44px;height:44px;flex-shrink:0;
+  background:linear-gradient(145deg,#f0b0c0,#c06878);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 12px rgba(168,79,99,0.3);
+}
+.logo-icon svg{width:26px;height:26px}
+.logo-text h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:22px;font-weight:500;
+  color:var(--text);letter-spacing:.02em;line-height:1.15;
+}
+.logo-text p{font-size:11px;color:var(--muted);margin-top:2px;font-weight:300;letter-spacing:.03em}
 .header-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.chip{font-size:10px;font-weight:500;padding:4px 11px;background:var(--rosa-claro);color:var(--rosa-text);border:1px solid var(--rosa-border-forte);border-radius:999px;letter-spacing:.03em}
-#btn-trocar{font-size:11px;color:var(--muted);background:none;border:1px solid var(--rosa-border);cursor:pointer;padding:4px 11px;border-radius:999px;font-family:'DM Sans',sans-serif;transition:all .15s;display:none;letter-spacing:.02em}
-#btn-trocar:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rosa-border-forte)}
+.chip{font-size:10px;font-weight:500;padding:4px 12px;background:var(--rosa-claro);color:var(--rosa-text);border:1px solid var(--rbf);border-radius:999px;letter-spacing:.04em}
 
-main{position:relative;z-index:5;max-width:1160px;margin:0 auto;padding:1.75rem 1.25rem}
-
-/* SETUP */
-#setup{background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);border:1px solid var(--rosa-border-forte);border-radius:22px;padding:2.25rem;max-width:660px;margin:2rem auto;box-shadow:var(--sombra)}
-#setup h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:8px;letter-spacing:.01em}
-#setup .lead{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;font-weight:300}
-.inst{background:linear-gradient(135deg,rgba(254,245,247,0.8),rgba(255,255,255,0.6));border:1px solid var(--rosa-border-forte);border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:1.25rem}
-.inst ol{font-size:12.5px;color:var(--text);line-height:2.1;padding-left:1.2rem}
-.inst ol a{color:var(--rosa-escuro);text-decoration:none;font-weight:500}
-.inst ol a:hover{text-decoration:underline}
-.inst ol code{font-size:11px;background:white;padding:1px 6px;border-radius:4px;border:1px solid var(--rosa-border-forte);color:var(--rosa-text);font-family:monospace}
-.nota{font-size:12px;color:var(--verde-escuro);background:var(--verde-claro);border:1px solid rgba(45,158,122,0.2);border-radius:9px;padding:9px 13px;margin-bottom:1.25rem;line-height:1.6}
-.key-row{display:flex;gap:8px;flex-wrap:wrap}
-#key-input{flex:1;min-width:210px;font-family:'DM Sans',sans-serif;font-size:13px;padding:11px 15px;border:1px solid var(--rosa-border-forte);border-radius:11px;color:var(--text);background:white;outline:none;transition:border-color .15s;letter-spacing:.04em}
-#key-input:focus{border-color:var(--rosa-escuro)}
-#btn-salvar{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:11px 24px;background:linear-gradient(135deg,#e0a0b2,#c06880);color:white;border:none;border-radius:11px;cursor:pointer;box-shadow:0 3px 10px rgba(168,79,99,0.22);transition:opacity .15s;white-space:nowrap;letter-spacing:.02em}
-#btn-salvar:hover{opacity:.87}
-#key-msg{font-size:12px;margin-top:8px}
-#key-msg.ok{color:var(--verde)}
-#key-msg.err{color:#b03030}
-
-#app{display:none}
+/* MAIN */
+main{position:relative;z-index:5;max-width:1160px;margin:0 auto;padding:2rem 1.25rem}
 
 /* SEARCH */
-.search-box{background:rgba(255,255,255,0.88);backdrop-filter:blur(10px);border:1px solid var(--rosa-border-forte);border-radius:18px;padding:1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:10px;box-shadow:var(--sombra)}
-.search-icon{color:var(--rosa-escuro);flex-shrink:0;opacity:.7}
-#q{flex:1;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;font-weight:300}
-#q::placeholder{color:#c8aab2;font-weight:300}
-#btn-buscar{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 24px;background:linear-gradient(135deg,#e0a0b2,#c06880);color:white;border:none;border-radius:11px;cursor:pointer;box-shadow:0 2px 8px rgba(168,79,99,0.22);transition:opacity .15s;white-space:nowrap;letter-spacing:.02em}
+.search-box{
+  background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);
+  border:1px solid var(--rbf);border-radius:20px;
+  padding:1.1rem 1.4rem;margin-bottom:1rem;
+  display:flex;align-items:center;gap:12px;
+  box-shadow:var(--sh);
+}
+.si{color:var(--rosa-escuro);flex-shrink:0;opacity:.65}
+#q{
+  flex:1;border:none;background:transparent;
+  font-family:"DM Sans",sans-serif;font-size:15px;
+  color:var(--text);outline:none;font-weight:300;
+}
+#q::placeholder{color:#cbb0b8;font-weight:300}
+#btn-buscar{
+  font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;
+  padding:10px 26px;
+  background:linear-gradient(135deg,#e8a8b8,#c06878);
+  color:white;border:none;border-radius:12px;cursor:pointer;
+  box-shadow:0 3px 10px rgba(168,79,99,0.25);
+  transition:opacity .15s;white-space:nowrap;letter-spacing:.03em;
+}
 #btn-buscar:hover{opacity:.87}
 #btn-buscar:disabled{opacity:.4;cursor:not-allowed}
 
 /* FILTROS */
-.filtros{background:rgba(255,255,255,0.82);backdrop-filter:blur(10px);border:1px solid var(--rosa-border-forte);border-radius:18px;padding:1rem 1.5rem;margin-bottom:1rem;display:flex;gap:1.5rem;flex-wrap:wrap;box-shadow:var(--sombra)}
+.filtros{
+  background:rgba(255,255,255,0.78);backdrop-filter:blur(12px);
+  border:1px solid var(--rbf);border-radius:20px;
+  padding:1.1rem 1.5rem;margin-bottom:1rem;
+  display:flex;gap:1.5rem;flex-wrap:wrap;
+  box-shadow:var(--sh);
+}
 .fg{display:flex;flex-direction:column;gap:7px}
-.fg-label{font-size:9.5px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.fgl{font-size:9.5px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 .pills{display:flex;flex-wrap:wrap;gap:5px}
-.pill{font-size:11px;padding:5px 13px;border-radius:999px;border:1px solid var(--rosa-border);background:white;color:var(--muted);cursor:pointer;transition:all .13s;user-select:none;font-weight:300;letter-spacing:.02em}
-.pill:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rosa-border-forte)}
+.pill{
+  font-size:11.5px;padding:5px 14px;border-radius:999px;
+  border:1px solid var(--rb);background:white;color:var(--muted);
+  cursor:pointer;transition:all .13s;user-select:none;font-weight:300;
+}
+.pill:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rbf)}
 .pill.on-EO{background:#fcedf1;color:#7a2d40;border-color:var(--rosa-escuro)}
-.pill.on-CG{background:var(--roxo-claro);color:var(--roxo-escuro);border-color:#9a8ed8}
-.pill.on-TS{background:var(--amber-claro);color:var(--amber-escuro);border-color:#d4a050}
-.pill.on-EF{background:var(--verde-claro);color:var(--verde-escuro);border-color:#5dba9a}
-.pill.on-ET{background:var(--azul-claro);color:var(--azul-escuro);border-color:#6aaad8}
+.pill.on-CG{background:var(--rc);color:var(--re);border-color:#9a8ed8}
+.pill.on-TS{background:var(--ac);color:var(--ae);border-color:#d4a050}
+.pill.on-EF{background:var(--vc);color:var(--ve);border-color:#5dba9a}
+.pill.on-ET{background:var(--azc);color:var(--aze);border-color:#6aaad8}
 .pill.on-dir,.pill.on-abord{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rosa-escuro)}
 
 /* STATUS */
 .status{font-size:12px;color:var(--muted);margin-bottom:.9rem;display:none;align-items:center;gap:10px;flex-wrap:wrap;font-weight:300}
-.status-ativo{color:var(--rosa-text);font-weight:500}
-.btn-limpar{font-size:11px;color:var(--muted);background:none;border:1px solid var(--rosa-border);cursor:pointer;padding:3px 11px;border-radius:999px;font-family:'DM Sans',sans-serif;transition:all .13s}
-.btn-limpar:hover{background:var(--rosa-claro);color:var(--rosa-text)}
+.sa{color:var(--rosa-text);font-weight:500}
+.blimpar{font-size:11px;color:var(--muted);background:none;border:1px solid var(--rb);cursor:pointer;padding:3px 12px;border-radius:999px;font-family:"DM Sans",sans-serif;transition:all .13s}
+.blimpar:hover{background:var(--rosa-claro);color:var(--rosa-text)}
 
 /* LOADER */
-#loader{display:none;text-align:center;padding:3.5rem;color:var(--muted);font-size:13px;font-weight:300}
-.spin{width:30px;height:30px;border:1.5px solid var(--rosa-medio);border-top-color:var(--rosa-escuro);border-radius:50%;animation:rot .7s linear infinite;margin:0 auto 14px}
+#loader{display:none;text-align:center;padding:4rem;color:var(--muted);font-size:13px;font-weight:300}
+.spin{width:32px;height:32px;border:1.5px solid var(--rosa-medio);border-top-color:var(--rosa-escuro);border-radius:50%;animation:rot .7s linear infinite;margin:0 auto 16px}
 @keyframes rot{to{transform:rotate(360deg)}}
 
 /* GRID */
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.1rem}
 
 /* CARD */
-.card{background:rgba(255,255,255,0.96);border:1px solid var(--rosa-border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:all .22s;box-shadow:var(--sombra-card)}
-.card:hover{border-color:var(--rosa-escuro);box-shadow:0 6px 28px rgba(168,79,99,0.14);transform:translateY(-3px)}
-.thumb{position:relative;padding-top:56.25%;background:#f4dce2;cursor:pointer}
+.card{
+  background:rgba(255,255,255,0.97);
+  border:1px solid var(--rb);border-radius:20px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:all .22s;box-shadow:var(--shc);
+}
+.card:hover{border-color:var(--rosa-escuro);box-shadow:0 8px 32px rgba(168,79,99,0.15);transform:translateY(-3px)}
+.thumb{position:relative;padding-top:56.25%;background:#f8e0e6;cursor:pointer}
 .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .2s}
-.thumb:hover img{opacity:.85}
+.thumb:hover img{opacity:.88}
 .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.1);transition:background .2s}
 .thumb:hover .play{background:rgba(0,0,0,.28)}
-.play svg{width:44px;height:44px;fill:white;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
-.dur{position:absolute;bottom:7px;right:7px;background:rgba(0,0,0,.75);color:white;font-size:10.5px;font-weight:500;padding:2px 7px;border-radius:5px;letter-spacing:.03em}
-.card-body{padding:1rem 1.1rem;display:flex;flex-direction:column;gap:8px;flex:1}
-.card-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:500;line-height:1.35;color:var(--text);letter-spacing:.01em}
-.card-ch{font-size:11px;color:var(--muted);font-weight:300;letter-spacing:.02em}
+.play svg{width:46px;height:46px;fill:white;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+.dur{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.75);color:white;font-size:10.5px;font-weight:500;padding:2px 7px;border-radius:5px;letter-spacing:.04em}
+.cbody{padding:1.1rem 1.15rem;display:flex;flex-direction:column;gap:9px;flex:1}
+.ctitle{font-family:"Cormorant Garamond",serif;font-size:15.5px;font-weight:500;line-height:1.3;color:var(--text);letter-spacing:.01em}
+.cch{font-size:11px;color:var(--muted);font-weight:300;letter-spacing:.02em}
 .badges{display:flex;flex-wrap:wrap;gap:4px}
-.b{font-size:10px;font-weight:500;padding:3px 8px;border-radius:999px;letter-spacing:.02em}
-.b-EO{background:#fcedf1;color:#7a2d40}
-.b-CG{background:var(--roxo-claro);color:var(--roxo-escuro)}
-.b-TS{background:var(--amber-claro);color:var(--amber-escuro)}
-.b-EF{background:var(--verde-claro);color:var(--verde-escuro)}
-.b-ET{background:var(--azul-claro);color:var(--azul-escuro)}
-.b-dir{background:var(--cinza-claro);color:var(--cinza-escuro)}
-.b-ok{background:var(--verde-claro);color:var(--verde-escuro)}
-.b-cod{background:var(--rosa-claro);color:var(--rosa-text);font-family:monospace;font-size:9.5px}
-.warn{font-size:10px;color:var(--amber-escuro);background:var(--amber-claro);padding:4px 9px;border-radius:7px;line-height:1.45}
+.b{font-size:10px;font-weight:500;padding:3px 9px;border-radius:999px;letter-spacing:.02em}
+.bEO{background:#fcedf1;color:#7a2d40}
+.bCG{background:var(--rc);color:var(--re)}
+.bTS{background:var(--ac);color:var(--ae)}
+.bEF{background:var(--vc);color:var(--ve)}
+.bET{background:var(--azc);color:var(--aze)}
+.bdir{background:var(--cc);color:var(--ce)}
+.bok{background:var(--vc);color:var(--ve)}
+.bcod{background:var(--rosa-claro);color:var(--rosa-text);font-family:monospace;font-size:9.5px}
+.warn{font-size:10px;color:var(--ae);background:var(--ac);padding:4px 9px;border-radius:7px;line-height:1.5}
 .actions{display:flex;gap:6px;margin-top:auto;padding-top:2px}
-.btn-yt{display:inline-flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:7px 14px;border-radius:9px;border:none;background:#FF0000;color:white;cursor:pointer;text-decoration:none;transition:opacity .13s;flex:1;justify-content:center;letter-spacing:.02em}
-.btn-yt:hover{opacity:.84}
-.btn-yt svg{width:13px;height:13px;fill:white;flex-shrink:0}
-.btn-cp{display:inline-flex;align-items:center;gap:4px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:300;padding:7px 12px;border-radius:9px;border:1px solid var(--rosa-border);background:white;color:var(--muted);cursor:pointer;transition:all .13s;white-space:nowrap}
-.btn-cp:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rosa-border-forte)}
+.byt{display:inline-flex;align-items:center;gap:5px;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:500;padding:8px 14px;border-radius:10px;border:none;background:#FF0000;color:white;cursor:pointer;text-decoration:none;transition:opacity .13s;flex:1;justify-content:center;letter-spacing:.03em}
+.byt:hover{opacity:.84}
+.byt svg{width:13px;height:13px;fill:white;flex-shrink:0}
+.bcp{display:inline-flex;align-items:center;gap:4px;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:300;padding:8px 13px;border-radius:10px;border:1px solid var(--rb);background:white;color:var(--muted);cursor:pointer;transition:all .13s;white-space:nowrap}
+.bcp:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rbf)}
 
-.msg{grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-size:14px;font-weight:300}
-.msg strong{display:block;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--text);margin-bottom:6px;font-weight:500}
+.msg{grid-column:1/-1;text-align:center;padding:3.5rem;color:var(--muted);font-size:14px;font-weight:300}
+.msg strong{display:block;font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--text);margin-bottom:8px;font-weight:500}
 
-/* PAGINAÇÃO */
-#pag{display:flex;justify-content:center;gap:6px;margin-top:1.75rem;flex-wrap:wrap}
-.pb{font-family:'DM Sans',sans-serif;font-size:12px;padding:7px 15px;border:1px solid var(--rosa-border);border-radius:9px;background:white;color:var(--text);cursor:pointer;transition:all .13s;font-weight:300}
-.pb:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rosa-border-forte)}
-.pb.on{background:linear-gradient(135deg,#e0a0b2,#c06880);color:white;border-color:transparent;font-weight:500}
+/* PAG */
+#pag{display:flex;justify-content:center;gap:6px;margin-top:2rem;flex-wrap:wrap}
+.pb{font-family:"DM Sans",sans-serif;font-size:12px;padding:7px 16px;border:1px solid var(--rb);border-radius:10px;background:white;color:var(--text);cursor:pointer;transition:all .13s;font-weight:300}
+.pb:hover{background:var(--rosa-claro);color:var(--rosa-text);border-color:var(--rbf)}
+.pb.on{background:linear-gradient(135deg,#e8a8b8,#c06878);color:white;border-color:transparent;font-weight:500}
 
-footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:11px;color:var(--muted);border-top:1px solid var(--rosa-border);margin-top:3rem;font-weight:300;letter-spacing:.03em}
+footer{position:relative;z-index:5;text-align:center;padding:2rem;font-size:11px;color:var(--muted);border-top:1px solid var(--rb);margin-top:3rem;font-weight:300;letter-spacing:.04em}
 
 @media(max-width:640px){
-  header{padding:.75rem 1rem}
+  header{padding:.7rem 1rem}
   .logo-text h1{font-size:18px}
   main{padding:1rem .75rem}
   .search-box{flex-wrap:wrap}
   #btn-buscar{width:100%}
   #grid{grid-template-columns:1fr}
-  #setup{padding:1.5rem 1.1rem;margin:1rem 0}
   .filtros{gap:1rem}
-  .floral.tl,.floral.br{width:220px}
-  .floral.tr,.floral.bl{display:none}
+  .flor.f1{width:250px}
+  .flor.f2{width:220px}
+  .flor.f3,.flor.f4,.flor.f5{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- FLORES DECORATIVAS -->
-<svg class="floral tl" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
-  <g opacity=".9">
-    <ellipse cx="100" cy="100" rx="70" ry="24" transform="rotate(0 100 100)"/>
-    <ellipse cx="100" cy="100" rx="70" ry="24" transform="rotate(36 100 100)"/>
-    <ellipse cx="100" cy="100" rx="70" ry="24" transform="rotate(72 100 100)"/>
-    <ellipse cx="100" cy="100" rx="70" ry="24" transform="rotate(108 100 100)"/>
-    <ellipse cx="100" cy="100" rx="70" ry="24" transform="rotate(144 100 100)"/>
-    <circle cx="100" cy="100" r="16" fill="#fef5f7"/>
-    <ellipse cx="260" cy="200" rx="52" ry="18" transform="rotate(20 260 200)"/>
-    <ellipse cx="260" cy="200" rx="52" ry="18" transform="rotate(56 260 200)"/>
-    <ellipse cx="260" cy="200" rx="52" ry="18" transform="rotate(92 260 200)"/>
-    <ellipse cx="260" cy="200" rx="52" ry="18" transform="rotate(128 260 200)"/>
-    <ellipse cx="260" cy="200" rx="52" ry="18" transform="rotate(164 260 200)"/>
-    <circle cx="260" cy="200" r="12" fill="#fef5f7"/>
-    <ellipse cx="300" cy="60" rx="36" ry="12" transform="rotate(10 300 60)"/>
-    <ellipse cx="300" cy="60" rx="36" ry="12" transform="rotate(46 300 60)"/>
-    <ellipse cx="300" cy="60" rx="36" ry="12" transform="rotate(82 300 60)"/>
-    <ellipse cx="300" cy="60" rx="36" ry="12" transform="rotate(118 300 60)"/>
-    <circle cx="300" cy="60" r="9" fill="#fef5f7"/>
-    <ellipse cx="60" cy="290" rx="30" ry="10" transform="rotate(-15 60 290)"/>
-    <ellipse cx="60" cy="290" rx="30" ry="10" transform="rotate(21 60 290)"/>
-    <ellipse cx="60" cy="290" rx="30" ry="10" transform="rotate(57 60 290)"/>
-    <ellipse cx="60" cy="290" rx="30" ry="10" transform="rotate(93 60 290)"/>
-    <circle cx="60" cy="290" r="7" fill="#fef5f7"/>
-    <circle cx="180" cy="320" r="5" opacity=".5"/>
-    <circle cx="340" cy="150" r="4" opacity=".4"/>
-    <circle cx="140" cy="240" r="3" opacity=".35"/>
-  </g>
+<!-- FLORES DECORATIVAS SVG -->
+<svg class="flor f1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
+  <ellipse cx="130" cy="130" rx="85" ry="30" transform="rotate(0 130 130)"/>
+  <ellipse cx="130" cy="130" rx="85" ry="30" transform="rotate(36 130 130)"/>
+  <ellipse cx="130" cy="130" rx="85" ry="30" transform="rotate(72 130 130)"/>
+  <ellipse cx="130" cy="130" rx="85" ry="30" transform="rotate(108 130 130)"/>
+  <ellipse cx="130" cy="130" rx="85" ry="30" transform="rotate(144 130 130)"/>
+  <circle cx="130" cy="130" r="20" fill="#fef5f7"/>
+  <ellipse cx="330" cy="240" rx="62" ry="22" transform="rotate(20 330 240)"/>
+  <ellipse cx="330" cy="240" rx="62" ry="22" transform="rotate(56 330 240)"/>
+  <ellipse cx="330" cy="240" rx="62" ry="22" transform="rotate(92 330 240)"/>
+  <ellipse cx="330" cy="240" rx="62" ry="22" transform="rotate(128 330 240)"/>
+  <ellipse cx="330" cy="240" rx="62" ry="22" transform="rotate(164 330 240)"/>
+  <circle cx="330" cy="240" r="14" fill="#fef5f7"/>
+  <ellipse cx="380" cy="70" rx="44" ry="16" transform="rotate(10 380 70)"/>
+  <ellipse cx="380" cy="70" rx="44" ry="16" transform="rotate(46 380 70)"/>
+  <ellipse cx="380" cy="70" rx="44" ry="16" transform="rotate(82 380 70)"/>
+  <ellipse cx="380" cy="70" rx="44" ry="16" transform="rotate(118 380 70)"/>
+  <circle cx="380" cy="70" r="10" fill="#fef5f7"/>
+  <ellipse cx="70" cy="370" rx="36" ry="13" transform="rotate(-20 70 370)"/>
+  <ellipse cx="70" cy="370" rx="36" ry="13" transform="rotate(16 70 370)"/>
+  <ellipse cx="70" cy="370" rx="36" ry="13" transform="rotate(52 70 370)"/>
+  <ellipse cx="70" cy="370" rx="36" ry="13" transform="rotate(88 70 370)"/>
+  <circle cx="70" cy="370" r="9" fill="#fef5f7"/>
+  <circle cx="220" cy="390" r="6" opacity=".5"/>
+  <circle cx="420" cy="180" r="5" opacity=".4"/>
+  <circle cx="160" cy="290" r="4" opacity=".35"/>
+  <circle cx="300" cy="420" r="3" opacity=".3"/>
 </svg>
 
-<svg class="floral br" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
-  <g opacity=".9">
-    <ellipse cx="200" cy="200" rx="75" ry="26" transform="rotate(0 200 200)"/>
-    <ellipse cx="200" cy="200" rx="75" ry="26" transform="rotate(36 200 200)"/>
-    <ellipse cx="200" cy="200" rx="75" ry="26" transform="rotate(72 200 200)"/>
-    <ellipse cx="200" cy="200" rx="75" ry="26" transform="rotate(108 200 200)"/>
-    <ellipse cx="200" cy="200" rx="75" ry="26" transform="rotate(144 200 200)"/>
-    <circle cx="200" cy="200" r="18" fill="#fef5f7"/>
-    <ellipse cx="80" cy="100" rx="44" ry="15" transform="rotate(15 80 100)"/>
-    <ellipse cx="80" cy="100" rx="44" ry="15" transform="rotate(51 80 100)"/>
-    <ellipse cx="80" cy="100" rx="44" ry="15" transform="rotate(87 80 100)"/>
-    <ellipse cx="80" cy="100" rx="44" ry="15" transform="rotate(123 80 100)"/>
-    <circle cx="80" cy="100" r="10" fill="#fef5f7"/>
-    <ellipse cx="320" cy="320" rx="32" ry="11" transform="rotate(-12 320 320)"/>
-    <ellipse cx="320" cy="320" rx="32" ry="11" transform="rotate(24 320 320)"/>
-    <ellipse cx="320" cy="320" rx="32" ry="11" transform="rotate(60 320 320)"/>
-    <ellipse cx="320" cy="320" rx="32" ry="11" transform="rotate(96 320 320)"/>
-    <circle cx="320" cy="320" r="8" fill="#fef5f7"/>
-    <circle cx="150" cy="60" r="5" opacity=".5"/>
-    <circle cx="350" cy="250" r="4" opacity=".4"/>
-    <circle cx="260" cy="80" r="3" opacity=".35"/>
-  </g>
+<svg class="flor f2" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
+  <ellipse cx="250" cy="250" rx="90" ry="32" transform="rotate(0 250 250)"/>
+  <ellipse cx="250" cy="250" rx="90" ry="32" transform="rotate(36 250 250)"/>
+  <ellipse cx="250" cy="250" rx="90" ry="32" transform="rotate(72 250 250)"/>
+  <ellipse cx="250" cy="250" rx="90" ry="32" transform="rotate(108 250 250)"/>
+  <ellipse cx="250" cy="250" rx="90" ry="32" transform="rotate(144 250 250)"/>
+  <circle cx="250" cy="250" r="22" fill="#fef5f7"/>
+  <ellipse cx="90" cy="120" rx="55" ry="19" transform="rotate(15 90 120)"/>
+  <ellipse cx="90" cy="120" rx="55" ry="19" transform="rotate(51 90 120)"/>
+  <ellipse cx="90" cy="120" rx="55" ry="19" transform="rotate(87 90 120)"/>
+  <ellipse cx="90" cy="120" rx="55" ry="19" transform="rotate(123 90 120)"/>
+  <circle cx="90" cy="120" r="12" fill="#fef5f7"/>
+  <ellipse cx="400" cy="400" rx="40" ry="14" transform="rotate(-12 400 400)"/>
+  <ellipse cx="400" cy="400" rx="40" ry="14" transform="rotate(24 400 400)"/>
+  <ellipse cx="400" cy="400" rx="40" ry="14" transform="rotate(60 400 400)"/>
+  <ellipse cx="400" cy="400" rx="40" ry="14" transform="rotate(96 400 400)"/>
+  <circle cx="400" cy="400" r="10" fill="#fef5f7"/>
+  <circle cx="180" cy="80" r="6" opacity=".5"/>
+  <circle cx="440" cy="300" r="5" opacity=".4"/>
+  <circle cx="320" cy="100" r="4" opacity=".35"/>
 </svg>
 
-<svg class="floral tr" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
-  <ellipse cx="110" cy="110" rx="55" ry="19" transform="rotate(0 110 110)"/>
-  <ellipse cx="110" cy="110" rx="55" ry="19" transform="rotate(60 110 110)"/>
-  <ellipse cx="110" cy="110" rx="55" ry="19" transform="rotate(120 110 110)"/>
-  <circle cx="110" cy="110" r="13" fill="#fef5f7"/>
+<svg class="flor f3" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
+  <ellipse cx="130" cy="130" rx="65" ry="23" transform="rotate(0 130 130)"/>
+  <ellipse cx="130" cy="130" rx="65" ry="23" transform="rotate(60 130 130)"/>
+  <ellipse cx="130" cy="130" rx="65" ry="23" transform="rotate(120 130 130)"/>
+  <circle cx="130" cy="130" r="15" fill="#fef5f7"/>
 </svg>
 
-<svg class="floral bl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
-  <ellipse cx="100" cy="100" rx="48" ry="16" transform="rotate(30 100 100)"/>
-  <ellipse cx="100" cy="100" rx="48" ry="16" transform="rotate(90 100 100)"/>
-  <ellipse cx="100" cy="100" rx="48" ry="16" transform="rotate(150 100 100)"/>
-  <circle cx="100" cy="100" r="11" fill="#fef5f7"/>
+<svg class="flor f4" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
+  <ellipse cx="120" cy="120" rx="58" ry="20" transform="rotate(30 120 120)"/>
+  <ellipse cx="120" cy="120" rx="58" ry="20" transform="rotate(90 120 120)"/>
+  <ellipse cx="120" cy="120" rx="58" ry="20" transform="rotate(150 120 120)"/>
+  <circle cx="120" cy="120" r="13" fill="#fef5f7"/>
+</svg>
+
+<svg class="flor f5" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" fill="#d4879a">
+  <ellipse cx="180" cy="180" rx="78" ry="27" transform="rotate(0 180 180)"/>
+  <ellipse cx="180" cy="180" rx="78" ry="27" transform="rotate(45 180 180)"/>
+  <ellipse cx="180" cy="180" rx="78" ry="27" transform="rotate(90 180 180)"/>
+  <ellipse cx="180" cy="180" rx="78" ry="27" transform="rotate(135 180 180)"/>
+  <circle cx="180" cy="180" r="18" fill="#fef5f7"/>
 </svg>
 
 <header>
   <div class="logo">
-    <div class="logo-mark">
-      <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 18c0 1.1-1.34 2-3 2s-3-.9-3-2 1.34-2 3-2 3 .9 3 2zm12-2c0 1.1-1.34 2-3 2s-3-.9-3-2 1.34-2 3-2 3 .9 3 2z"/></svg>
+    <div class="logo-icon">
+      <!-- LOGO LÚDICA: nota musical com estrelinhas -->
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <circle cx="14" cy="36" r="7" fill="white" opacity=".95"/>
+        <circle cx="34" cy="30" r="6" fill="white" opacity=".85"/>
+        <rect x="19" y="10" width="3" height="26" rx="1.5" fill="white"/>
+        <rect x="37" y="6" width="3" height="24" rx="1.5" fill="white"/>
+        <path d="M22 10 L40 6" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="8" cy="12" r="2" fill="white" opacity=".7"/>
+        <circle cx="40" cy="38" r="1.5" fill="white" opacity=".6"/>
+        <circle cx="44" cy="18" r="1.5" fill="white" opacity=".5"/>
+        <path d="M5 22 L7 20 L9 22 L7 24 Z" fill="white" opacity=".6"/>
+      </svg>
     </div>
     <div class="logo-text">
       <h1>Músicas Pedagógicas</h1>
@@ -249,42 +295,19 @@ footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:1
   </div>
   <div class="header-right">
     <span class="chip">BNCC 2018 &middot; DCNEI 2009</span>
-    <button id="btn-trocar" onclick="trocarChave()">Trocar chave</button>
   </div>
 </header>
 
 <main>
-
-<div id="setup" style="display:none">
-  <h2>Configure sua chave da YouTube API</h2>
-  <p class="lead">Esta ferramenta busca músicas reais no YouTube com filtros pedagógicos automáticos. Precisa de uma chave gratuita da YouTube Data API v3 — configurada uma vez, fica salva no navegador.</p>
-  <div class="inst">
-    <ol>
-      <li>Acesse <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a></li>
-      <li>Menu &rarr; <strong>APIs e serviços &rarr; Biblioteca</strong></li>
-      <li>Busque <strong>YouTube Data API v3</strong> &rarr; Ativar</li>
-      <li><strong>Credenciais &rarr; + Criar credencial &rarr; Chave de API</strong></li>
-      <li>Copie a chave <code>AIzaSy...</code> e cole abaixo</li>
-    </ol>
-  </div>
-  <p class="nota">Cota gratuita: <strong>10.000 unidades/dia</strong> &mdash; cada busca usa ~100 unidades (~100 buscas/dia, mais que suficiente para uso diário em sala).</p>
-  <div class="key-row">
-    <input type="password" id="key-input" placeholder="Cole sua chave: AIzaSy...">
-    <button id="btn-salvar" onclick="salvar()">Salvar e começar</button>
-  </div>
-  <div id="key-msg"></div>
-</div>
-
-<div id="app">
   <div class="search-box">
-    <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" id="q" placeholder="Digite um tema: acolhimento, natureza, corpo, cores, contar, amizade..." autocomplete="off" onkeydown="if(event.key==='Enter')buscar()">
+    <svg class="si" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="q" placeholder="Digite um tema: acolhimento, natureza, corpo, cores, amizade, contar..." autocomplete="off" onkeydown="if(event.key==='Enter')buscar()">
     <button id="btn-buscar" onclick="buscar()">Buscar</button>
   </div>
 
   <div class="filtros">
     <div class="fg">
-      <span class="fg-label">Campo de Experiência</span>
+      <span class="fgl">Campo de Experiência</span>
       <div class="pills">
         <span class="pill" data-g="campo" data-v="EO">O eu e o outro</span>
         <span class="pill" data-g="campo" data-v="CG">Corpo e gestos</span>
@@ -294,7 +317,7 @@ footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:1
       </div>
     </div>
     <div class="fg">
-      <span class="fg-label">Direito de Aprendizagem</span>
+      <span class="fgl">Direito de Aprendizagem</span>
       <div class="pills">
         <span class="pill" data-g="dir" data-v="Conviver">Conviver</span>
         <span class="pill" data-g="dir" data-v="Brincar">Brincar</span>
@@ -305,7 +328,7 @@ footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:1
       </div>
     </div>
     <div class="fg">
-      <span class="fg-label">Abordagem</span>
+      <span class="fgl">Abordagem</span>
       <div class="pills">
         <span class="pill" data-g="abord" data-v="Waldorf">Waldorf</span>
         <span class="pill" data-g="abord" data-v="Montessori">Montessori</span>
@@ -315,16 +338,14 @@ footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:1
   </div>
 
   <div class="status" id="status">
-    <span id="status-txt"></span>
-    <span class="status-ativo" id="status-filtros"></span>
-    <button class="btn-limpar" onclick="limpar()">Limpar filtros</button>
+    <span id="stxt"></span>
+    <span class="sa" id="sfil"></span>
+    <button class="blimpar" onclick="limpar()">Limpar filtros</button>
   </div>
 
   <div id="loader"><div class="spin"></div>Buscando músicas pedagógicas no YouTube...</div>
   <div id="grid"></div>
   <div id="pag"></div>
-</div>
-
 </main>
 
 <footer>
@@ -332,23 +353,27 @@ footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:1
 </footer>
 
 <script>
-const CAMPOS={EO:{n:"O eu, o outro e o nós",c:["EI03EO01","EI03EO02","EI03EO03","EI03EO04","EI03EO05","EI03EO06","EI03EO07"]},CG:{n:"Corpo, gestos e movimentos",c:["EI03CG01","EI03CG02","EI03CG03","EI03CG04","EI03CG05"]},TS:{n:"Traços, sons, cores e formas",c:["EI03TS01","EI03TS02","EI03TS03","EI03TS04","EI03TS05"]},EF:{n:"Escuta, fala, pensamento e imaginação",c:["EI03EF01","EI03EF02","EI03EF03","EI03EF04","EI03EF05","EI03EF06","EI03EF07","EI03EF08","EI03EF09"]},ET:{n:"Espaços, tempos, quantidades, relações e transformações",c:["EI03ET01","EI03ET02","EI03ET03","EI03ET04","EI03ET05","EI03ET06","EI03ET07"]}};
-
-// Queries base por campo (sem texto do usuário)
-const QBase={
-  EO:["música infantil identidade cooperação roda educação infantil","canção infantil amizade convivência escola criança brasileira","música brincadeira coletiva criança educação infantil","canção folclore roda criança brasileira tradição","Palavra Cantada música identidade criança"],
-  CG:["música movimento corporal criança educação infantil","canção dança gestos infantil escola brasileira","Palavra Cantada música movimento corporal infantil","música ritmo corporal educação infantil brasil","canção brincadeira movimento criança pequena 4 anos"],
+const KEY="AIzaSyBPIcm6ldoXf8VahW6NUxOaV5jUUEZmoig";
+const CAMPOS={
+  EO:{n:"O eu, o outro e o nós",c:["EI03EO01","EI03EO02","EI03EO03","EI03EO04","EI03EO05","EI03EO06","EI03EO07"]},
+  CG:{n:"Corpo, gestos e movimentos",c:["EI03CG01","EI03CG02","EI03CG03","EI03CG04","EI03CG05"]},
+  TS:{n:"Traços, sons, cores e formas",c:["EI03TS01","EI03TS02","EI03TS03","EI03TS04","EI03TS05"]},
+  EF:{n:"Escuta, fala, pensamento e imaginação",c:["EI03EF01","EI03EF02","EI03EF03","EI03EF04","EI03EF05","EI03EF06","EI03EF07","EI03EF08","EI03EF09"]},
+  ET:{n:"Espaços, tempos, quantidades, relações e transformações",c:["EI03ET01","EI03ET02","EI03ET03","EI03ET04","EI03ET05","EI03ET06","EI03ET07"]}
+};
+const QB={
+  EO:["música infantil identidade cooperação roda educação infantil","canção infantil amizade convivência escola criança brasileira","Palavra Cantada música identidade criança escola","música brincadeira coletiva criança educação infantil","canção folclore roda criança brasileira tradição"],
+  CG:["música movimento corporal criança educação infantil","Palavra Cantada música movimento corporal infantil","canção dança gestos infantil escola brasileira","música ritmo corporal educação infantil brasil","canção brincadeira movimento criança pequena 4 anos"],
   TS:["música artes visuais infantil escola brasileira","Palavra Cantada música cores criatividade infantil","canção sons instrumentos criança pequena escola","música folclore tradição oral infantil brasileira","canção expressão artística educação infantil"],
   EF:["Bia Bedran música contação histórias infantil","canção imaginação linguagem criança educação infantil","música poesia infantil brasileira qualidade","Palavra Cantada canção rima vocabulário infantil","música narrativa faz de conta criança 4 anos"],
-  ET:["música números contagem infantil educação brasileira","canção natureza meio ambiente criança escola","música sequência lógica educação infantil","Palavra Cantada música natureza criança","canção tempo rotina criança pequena escola"]
+  ET:["música números contagem infantil educação brasileira","canção natureza meio ambiente criança escola","Palavra Cantada música natureza criança","música sequência lógica educação infantil","canção tempo rotina criança pequena escola"]
 };
-const QAbord={
+const QA={
   Waldorf:["música Waldorf educação infantil natureza ritmo","canção ritmo natural educação infantil steiner waldorf","música contação histórias natureza infantil ritmo waldorf"],
   Montessori:["música autonomia criança Montessori educação infantil","canção criança aprender fazendo autonomia escola","música desenvolvimento infantil Montessori liberdade"],
   Piaget:["música jogo simbólico faz de conta educação infantil","canção brincadeira imaginária criança 4 anos escola","música desenvolvimento pré-operacional criança 4 anos"]
 };
-const QGeral=["Palavra Cantada música educação infantil","Bia Bedran música infantil","Toquinho música infantil clássica","Vinícius de Moraes música infantil","Tia Má música infantil escola","música folclore brasileiro roda criança educação","canção educação infantil qualidade pedagógica","música pedagógica criança 4 anos educação","canção infantil brasileira clássica educação","música brincadeira infantil tradicional brasileira"];
-
+const QG=["Palavra Cantada música educação infantil","Bia Bedran música infantil","Toquinho música infantil clássica","Vinícius de Moraes música infantil","Tia Má música infantil escola","música folclore brasileiro roda criança educação","canção educação infantil qualidade pedagógica","música pedagógica criança 4 anos educação","canção infantil brasileira clássica educação","música brincadeira infantil tradicional brasileira"];
 const AOK=["palavra cantada","bia bedran","tia má","marta prudente","toquinho","vinícius de moraes","vinicius de moraes","caetano veloso","gilberto gil","adriana calcanhotto","arnaldo antunes","chico buarque","milton nascimento","dorival caymmi","luiz gonzaga","gal costa","nana caymmi","alceu valença","gonzaguinha","ivan lins"];
 const VET=["funk","pagode","sertanejo universitário","axé","brega","piseiro","reggaeton","trap","mc ","twerk","sensual","adulto","evangélico","evangélica","gospel","oração","missa","culto","bíblia","slime","unboxing","challenge","gaming","gameplay","cocomelon","morphle","superhero","violência","terror","namoro infantil","beijo infantil"];
 const CVet=["canal kids","videokids","evang","gospel kids","ministério infantil","pregação"];
@@ -357,7 +382,7 @@ const COK=["palavra cantada","bia bedran","tia má","toquinho oficial","tv escol
 function parseDur(iso){const m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);if(!m)return 999;return(parseInt(m[1]||0)*60)+parseInt(m[2]||0)+parseInt(m[3]||0)/60}
 function fmtDur(min){const m=Math.floor(min),s=Math.round((min-m)*60);return m+":"+String(s).padStart(2,"0")}
 
-function score(item){
+function calcScore(item){
   const t=(item.snippet.title||"").toLowerCase(),ch=(item.snippet.channelTitle||"").toLowerCase(),d=(item.snippet.description||"").toLowerCase(),f=t+" "+ch+" "+d;
   let s=0,w=[];
   for(const v of VET){if(f.includes(v))return{s:-999,w:["vetado"]}}
@@ -370,42 +395,25 @@ function score(item){
   return{s,w};
 }
 
-function iCampo(t,d){const f=(t+" "+d).toLowerCase();if(/identidade|coopera|amizade|conviv|roda|emoção|sentiment|família|nós|grupo|acolh/.test(f))return"EO";if(/movimento|corpo|dança|gesto|coordena|motora|equilíbrio|saltar|correr/.test(f))return"CG";if(/cor|artes|pintura|som|instrumento|ritmo|folclore|criatividade|expressão/.test(f))return"TS";if(/história|imagina|poesia|palavra|fala|contar|narrativa|rima|vocabulário|escuta/.test(f))return"EF";if(/número|contar|natureza|tempo|espaço|quantidade|transforma|água|planta|animal/.test(f))return"ET";return null}
+function iCampo(t,d){
+  const f=(t+" "+d).toLowerCase();
+  if(/identidade|coopera|amizade|conviv|roda|emoção|sentiment|família|nós|grupo|acolh/.test(f))return"EO";
+  if(/movimento|corpo|dança|gesto|coordena|motora|equilíbrio|saltar|correr/.test(f))return"CG";
+  if(/cor|artes|pintura|som|instrumento|ritmo|folclore|criatividade|expressão/.test(f))return"TS";
+  if(/história|imagina|poesia|palavra|fala|contar|narrativa|rima|vocabulário|escuta/.test(f))return"EF";
+  if(/número|contar|natureza|tempo|espaço|quantidade|transforma|agua|planta|animal/.test(f))return"ET";
+  return null;
+}
 function iDir(c){return{EO:"Conviver",CG:"Brincar",TS:"Expressar",EF:"Explorar",ET:"Explorar"}[c]||"Participar"}
 function iCod(c){if(!c)return null;const a=CAMPOS[c]?.c;return a?a[0]:null}
 
-let KEY="",fil={campo:null,dir:null,abord:null},cards=[],pg=1;
+let fil={campo:null,dir:null,abord:null},cards=[],pg=1;
 const PPG=12;
 
-function salvar(){
-  const k=document.getElementById("key-input").value.trim();
-  if(!k.startsWith("AIza")||k.length<30){const m=document.getElementById("key-msg");m.textContent="Chave inválida. Deve começar com AIza.";m.className="err";return}
-  KEY=k;localStorage.setItem("yt_fab_key",k);
-  const m=document.getElementById("key-msg");m.textContent="Chave salva com sucesso!";m.className="ok";
-  setTimeout(ativar,500);
-}
-function ativar(){
-  document.getElementById("setup").style.display="none";
-  document.getElementById("app").style.display="block";
-  document.getElementById("btn-trocar").style.display="inline-flex";
-  exec();
-}
-function trocarChave(){
-  localStorage.removeItem("yt_fab_key");KEY="";
-  document.getElementById("setup").style.display="block";
-  document.getElementById("app").style.display="none";
-  document.getElementById("btn-trocar").style.display="none";
-  document.getElementById("key-input").value="";
-  document.getElementById("key-msg").textContent="";
-}
-
-// MONTA QUERIES — texto do usuário gera queries próprias e específicas
 function montarQ(){
-  const txt=document.getElementById("q").value.trim().toLowerCase();
+  const txt=document.getElementById("q").value.trim();
   let qs=[];
-
   if(txt){
-    // Queries diretas com o texto do usuário — isso é o que faltava antes
     qs=[
       txt+" música infantil educação infantil escola",
       txt+" canção criança 4 anos educação infantil",
@@ -413,19 +421,14 @@ function montarQ(){
       "Palavra Cantada "+txt+" música infantil",
       "Bia Bedran "+txt+" música infantil"
     ];
-    // Adiciona contexto de campo se filtrado
-    if(fil.campo){
-      const extra=QBase[fil.campo][0];
-      qs.push(txt+" "+extra);
-    }
+    if(fil.campo)qs.push(txt+" "+QB[fil.campo][0]);
   } else if(fil.campo){
-    qs=QBase[fil.campo].slice();
+    qs=QB[fil.campo].slice();
   } else if(fil.abord){
-    qs=QAbord[fil.abord].slice();
+    qs=QA[fil.abord].slice();
   } else {
-    qs=QGeral.slice();
+    qs=QG.slice();
   }
-
   return qs.slice(0,5);
 }
 
@@ -445,7 +448,6 @@ async function ytDets(ids){
 function buscar(){pg=1;exec()}
 
 async function exec(){
-  if(!KEY)return;
   const qs=montarQ();
   document.getElementById("loader").style.display="block";
   document.getElementById("grid").innerHTML="";
@@ -454,16 +456,12 @@ async function exec(){
   document.getElementById("btn-buscar").disabled=true;
   cards=[];
   const titulos=new Set();
-
   try{
     const im={};
-    for(const q of qs){
-      try{const d=await ytSearch(q);for(const i of(d.items||[])){const id=i.id.videoId;if(id&&!im[id])im[id]=i}}catch(e){console.warn("falhou:",q)}
-    }
+    for(const q of qs){try{const d=await ytSearch(q);for(const i of(d.items||[])){const id=i.id.videoId;if(id&&!im[id])im[id]=i}}catch(e){console.warn("query falhou:",q)}}
     const ids=Object.keys(im);
-    if(!ids.length)throw new Error("Nenhum resultado encontrado. Tente outras palavras ou filtros.");
-    const dets={};
-    for(let i=0;i<ids.length;i+=50)Object.assign(dets,await ytDets(ids.slice(i,i+50)));
+    if(!ids.length)throw new Error("Nenhum resultado. Tente outras palavras ou filtros.");
+    const dets={};for(let i=0;i<ids.length;i+=50)Object.assign(dets,await ytDets(ids.slice(i,i+50)));
     const cands=[];
     for(const id of ids){
       const item=im[id];const tl=item.snippet.title.toLowerCase();
@@ -472,7 +470,7 @@ async function exec(){
       const det=dets[id];let dur=5;
       if(det?.contentDetails?.duration)dur=parseDur(det.contentDetails.duration);
       if(dur>12||dur<0.4)continue;
-      const{s,w}=score(item);if(s<=-999)continue;
+      const{s,w}=calcScore(item);if(s<=-999)continue;
       const campo=fil.campo||iCampo(item.snippet.title,item.snippet.description);
       if(fil.dir&&iDir(campo)!==fil.dir)continue;
       cands.push({item,id,s,w,dur,campo});
@@ -489,10 +487,13 @@ async function exec(){
     document.getElementById("btn-buscar").disabled=false;
     renderCards();
     const sb=document.getElementById("status");sb.style.display="flex";
-    document.getElementById("status-txt").textContent=cards.length+" músicas encontradas e filtradas";
-    const at=[];if(fil.campo)at.push(CAMPOS[fil.campo].n);if(fil.dir)at.push(fil.dir);if(fil.abord)at.push(fil.abord);
+    document.getElementById("stxt").textContent=cards.length+" músicas encontradas e filtradas";
+    const at=[];
+    if(fil.campo)at.push(CAMPOS[fil.campo].n);
+    if(fil.dir)at.push(fil.dir);
+    if(fil.abord)at.push(fil.abord);
     const txt=document.getElementById("q").value.trim();if(txt)at.push('"'+txt+'"');
-    document.getElementById("status-filtros").textContent=at.length?"· "+at.join(" · "):"";
+    document.getElementById("sfil").textContent=at.length?"· "+at.join(" · "):"";
   }catch(e){
     document.getElementById("loader").style.display="none";
     document.getElementById("btn-buscar").disabled=false;
@@ -501,13 +502,35 @@ async function exec(){
 }
 
 function renderCards(){
-  const ini=(pg-1)*PPG,slice=cards.slice(ini,ini+PPG),grid=document.getElementById("grid");
-  if(!slice.length){grid.innerHTML='<div class="msg"><strong>Nenhum resultado</strong>Tente outras palavras ou filtros.</div>';return}
-  grid.innerHTML=slice.map(c=>{
+  const ini=(pg-1)*PPG,sl=cards.slice(ini,ini+PPG),grid=document.getElementById("grid");
+  if(!sl.length){grid.innerHTML='<div class="msg"><strong>Nenhum resultado</strong>Tente outras palavras ou filtros.</div>';return}
+  grid.innerHTML=sl.map(c=>{
     const cn=c.campo?CAMPOS[c.campo]?.n:null;
-    const al=c.w.length&&c.w[0]!=="vetado"?'<div class="warn">Verifique antes de usar em sala: '+c.w.join(", ")+'</div>':"";
-    const u=c.url.replace(/'/g,"\'");
-    return'<div class="card"><div class="thumb" onclick="window.open(''+u+'','_blank')"><img src="'+c.thumb+'" alt="" loading="lazy"><div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="dur">'+fmtDur(c.dur)+'</span></div><div class="card-body"><div class="card-title">'+c.title+'</div><div class="card-ch">'+c.ch+'</div><div class="badges">'+(cn?'<span class="b b-'+c.campo+'">'+cn+'</span>':"")+(c.cod?'<span class="b b-cod">'+c.cod+'</span>':"")+'<span class="b b-dir">'+c.dir+'</span>'+(c.ok?'<span class="b b-ok">Artista curado</span>':"")+'</div>'+al+'<div class="actions"><a class="btn-yt" href="'+c.url+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.47 3.5 12 3.5 12 3.5s-7.47 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.12 0 12 0 12s0 3.88.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.91.55 9.38.55 9.38.55s7.47 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.88 24 12 24 12s0-3.88-.5-5.81zM9.75 15.02V8.98L15.83 12l-6.08 3.02z"/></svg> Abrir no YouTube</a><button class="btn-cp" onclick="navigator.clipboard.writeText(''+u+'');this.textContent='Copiado!'">Link</button></div></div></div>';
+    const al=c.w.length&&c.w[0]!=="vetado"?`<div class="warn">Verifique antes de usar em sala: ${c.w.join(", ")}</div>`:"";
+    const u=encodeURIComponent(c.url);
+    const parts=[
+      `<div class="card">`,
+      `<div class="thumb" onclick="window.open(decodeURIComponent('${u}'),'_blank')">`,
+      `<img src="${c.thumb}" alt="" loading="lazy">`,
+      `<div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>`,
+      `<span class="dur">${fmtDur(c.dur)}</span></div>`,
+      `<div class="cbody">`,
+      `<div class="ctitle">${c.title}</div>`,
+      `<div class="cch">${c.ch}</div>`,
+      `<div class="badges">`,
+      cn?`<span class="b b${c.campo}">${cn}</span>`:"",
+      c.cod?`<span class="b bcod">${c.cod}</span>`:"",
+      `<span class="b bdir">${c.dir}</span>`,
+      c.ok?`<span class="b bok">Artista curado</span>`:"",
+      `</div>`,al,
+      `<div class="actions">`,
+      `<a class="byt" href="${c.url}" target="_blank" rel="noopener">`,
+      `<svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.47 3.5 12 3.5 12 3.5s-7.47 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.12 0 12 0 12s0 3.88.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.91.55 9.38.55 9.38.55s7.47 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.88 24 12 24 12s0-3.88-.5-5.81zM9.75 15.02V8.98L15.83 12l-6.08 3.02z"/></svg>`,
+      ` Abrir no YouTube</a>`,
+      `<button class="bcp" id="cp-${c.url.slice(-11)}" onclick="cpLink(this,'${u}')">Link</button>`,
+      `</div></div></div>`
+    ];
+    return parts.join("");
   }).join("");
   renderPag();
 }
@@ -515,14 +538,12 @@ function renderCards(){
 function renderPag(){
   const tot=Math.ceil(cards.length/PPG);if(tot<=1){document.getElementById("pag").innerHTML="";return}
   let h="";
-  if(pg>1)h+='<button class="pb" onclick="irPag('+(pg-1)+')">&#8592; Anterior</button>';
-  for(let i=1;i<=tot;i++)h+='<button class="pb '+(i===pg?"on":"")+'" onclick="irPag('+i+')">'+i+'</button>';
-  if(pg<tot)h+='<button class="pb" onclick="irPag('+(pg+1)+')">Próxima &#8594;</button>';
+  if(pg>1)h+='<button class="pb" onclick="irPag('+( pg-1)+')">&#8592; Anterior</button>';
+  for(let i=1;i<=tot;i++)h+='<button class="pb '+( i===pg?"on":"")+'" onclick="irPag('+i+')">'+i+'</button>';
+  if(pg<tot)h+='<button class="pb" onclick="irPag('+( pg+1)+')">Pr&#243;xima &#8594;</button>';
   document.getElementById("pag").innerHTML=h;
 }
-
 function irPag(n){pg=n;renderCards();window.scrollTo({top:0,behavior:"smooth"})}
-
 function limpar(){fil={campo:null,dir:null,abord:null};document.querySelectorAll(".pill").forEach(p=>p.className="pill");document.getElementById("q").value="";buscar()}
 
 document.querySelectorAll(".pill").forEach(p=>{
@@ -535,12 +556,8 @@ document.querySelectorAll(".pill").forEach(p=>{
   });
 });
 
-window.addEventListener("load",()=>{
-  KEY="AIzaSyBPIcm6ldoXf8VahW6NUxOaV5jUUEZmoig";
-  document.getElementById("setup").style.display="none";
-  document.getElementById("app").style.display="block";
-  exec();
-});
+function cpLink(btn,u){navigator.clipboard.writeText(decodeURIComponent(u));btn.textContent="Copiado!";setTimeout(()=>btn.textContent="Link",1500)}
+window.addEventListener("load",()=>{ exec(); });
 </script>
 </body>
 </html>
