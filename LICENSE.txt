@@ -1,0 +1,32 @@
+LICENÇA DE USO — TODOS OS DIREITOS RESERVADOS
+===============================================
+
+Copyright © 2026 Luis Claudio Soares Pinto de Oliveira Rodrigues
+Todos os direitos reservados.
+
+Este software, incluindo seu código-fonte, design, lógica pedagógica,
+curadoria de conteúdo e estrutura visual, é de autoria exclusiva de
+Luis Claudio Soares Pinto de Oliveira Rodrigues.
+
+PERMISSÕES CONCEDIDAS:
+- Uso pessoal e educacional não comercial
+- Compartilhamento do link público desde que mantida a autoria
+
+EXPRESSAMENTE PROIBIDO, sem autorização prévia e por escrito do autor:
+- Copiar, reproduzir ou redistribuir o código-fonte
+- Modificar, adaptar ou criar obras derivadas
+- Usar para fins comerciais, venda ou monetização
+- Remover ou alterar avisos de autoria e copyright
+- Publicar como trabalho próprio
+
+VIOLAÇÕES desta licença estão sujeitas às penalidades previstas na
+Lei de Direitos Autorais brasileira (Lei nº 9.610/1998) e demais
+legislações aplicáveis.
+
+Para solicitar autorização de uso, entre em contato com o autor.
+
+-----------------------------------------------
+Desenvolvido com suporte pedagógico para a Professora Fabiana
+Fundamentação: BNCC 2018 (Resolução CNE/CP nº 2/2017) e DCNEI 2009
+EI03 — Educação Infantil, Crianças Pequenas (4 a 5 anos e 11 meses)
+-----------------------------------------------
