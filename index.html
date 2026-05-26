@@ -255,7 +255,7 @@ footer{position:relative;z-index:5;text-align:center;padding:1.75rem;font-size:1
 
 <main>
 
-<div id="setup">
+<div id="setup" style="display:none">
   <h2>Configure sua chave da YouTube API</h2>
   <p class="lead">Esta ferramenta busca músicas reais no YouTube com filtros pedagógicos automáticos. Precisa de uma chave gratuita da YouTube Data API v3 — configurada uma vez, fica salva no navegador.</p>
   <div class="inst">
@@ -536,8 +536,10 @@ document.querySelectorAll(".pill").forEach(p=>{
 });
 
 window.addEventListener("load",()=>{
-  const k=localStorage.getItem("yt_fab_key");
-  if(k){KEY=k;document.getElementById("key-input").value=k;ativar()}
+  KEY="AIzaSyBPIcm6ldoXf8VahW6NUxOaV5jUUEZmoig";
+  document.getElementById("setup").style.display="none";
+  document.getElementById("app").style.display="block";
+  exec();
 });
 </script>
 </body>
